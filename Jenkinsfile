@@ -11,5 +11,10 @@ pipeline {
 	        sh 'mvn -B -DskipTests clean package' 
             }
 	}
+	stage('RunCMAB') {
+	   steps {
+	       sh 'java -Xms256m -Xmx512m -XX:PermSize=256m -XX:MaxPermSize=512m -jar target/CMAB-1.0-SNAPSHOT.jar'
+	   }
+	}
     }
 }
